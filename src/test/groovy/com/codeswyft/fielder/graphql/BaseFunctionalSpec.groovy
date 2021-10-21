@@ -10,8 +10,10 @@ import com.codeswyft.fielder.repositories.RoleRepository
 import com.codeswyft.fielder.repositories.UserRepository
 import com.codeswyft.fielder.util.dataseed.DefaultPermissions
 import com.fasterxml.jackson.databind.ObjectMapper
-//import graphql.ExecutionInput
 import groovy.util.logging.Slf4j
+
+//import graphql.ExecutionInput
+
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.util.CollectionUtils
 import io.micronaut.runtime.server.EmbeddedServer
@@ -54,7 +56,7 @@ class BaseFunctionalSpec extends Specification {
         return CollectionUtils.mapOf(
             "datasources.default.url", "jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
             "datasources.default.username", "sa",
-            "datasources.default.password", "''",
+            "datasources.default.password", '',
             "datasources.default.driverClassName", "org.h2.Driver",
             "jpa.default.properties.hibernate.hbm2ddl.auto", "create-drop",
             "jpa.default.properties.hibernate.show_sql", false,
