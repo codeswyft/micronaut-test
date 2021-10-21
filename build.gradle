@@ -22,6 +22,9 @@ micronaut {
 }
 
 dependencies {
+
+    runtimeOnly("org.springframework:spring-jdbc")
+
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.flyway:micronaut-flyway")
