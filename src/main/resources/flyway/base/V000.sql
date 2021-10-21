@@ -90,3 +90,45 @@ ALTER TABLE ONLY user_role
 
 ALTER TABLE ONLY user_role
     ADD CONSTRAINT fk_userrole_user FOREIGN KEY (user_id) REFERENCES users (id);
+
+
+CREATE TABLE tax_rate
+(
+    id                character varying(255)      NOT NULL,
+    created_at        timestamp without time zone NOT NULL,
+    created_by_id     character varying(255)      NOT NULL,
+    updated_at        timestamp without time zone NOT NULL,
+    updated_by_id     character varying(255)      NOT NULL,
+    version           integer,
+    tax_rate_group_id character varying(255)      NOT NULL,
+    name              character varying(255)      NOT NULL,
+    rate              numeric(7, 6)               NOT NULL
+);
+
+CREATE TABLE tax_rate_group
+(
+    id                        character varying(255)      NOT NULL,
+    created_at                timestamp without time zone NOT NULL,
+    created_by_id             character varying(255)      NOT NULL,
+    updated_at                timestamp without time zone NOT NULL,
+    updated_by_id             character varying(255)      NOT NULL,
+    version                   integer,
+    organization_id           character varying(255)      NOT NULL,
+    name                      character varying(255)      NOT NULL,
+    is_archived               boolean DEFAULT false       NOT NULL,
+    is_locked                 boolean DEFAULT false       NOT NULL,
+    plugin_provider           character varying(255),
+    plugin_provider_object_id character varying(255)
+);
+
+ALTER TABLE ONLY tax_rate_group
+    ADD CONSTRAINT tax_group_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY tax_rate
+    ADD CONSTRAINT tax_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY tax_rate
+    ADD CONSTRAINT fk_taxrate_taxrategroup FOREIGN KEY (tax_rate_group_id) REFERENCES tax_rate_group (id);
+
+-- ALTER TABLE ONLY tax_rate_group
+--     ADD CONSTRAINT fk_taxrategroup_organization FOREIGN KEY (organization_id) REFERENCES organization (id);

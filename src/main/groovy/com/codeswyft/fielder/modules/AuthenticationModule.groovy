@@ -1,6 +1,5 @@
 package com.codeswyft.fielder.modules
 
-import com.codeswyft.fielder.domain.RolePO
 import com.codeswyft.fielder.domain.UserPO
 import com.codeswyft.fielder.graphql.input.LoginInput
 import com.codeswyft.fielder.graphql.payload.LoginPayload
@@ -22,7 +21,6 @@ import org.slf4j.MDC
 import javax.inject.Singleton
 import javax.transaction.Transactional
 import java.time.Duration
-import java.time.LocalDateTime
 
 @Slf4j
 @Singleton
