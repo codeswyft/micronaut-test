@@ -54,7 +54,7 @@ class BaseFunctionalSpec extends Specification {
         return CollectionUtils.mapOf(
             "datasources.default.url", "jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE",
             "datasources.default.username", "sa",
-            "datasources.default.password", "''",
+            "datasources.default.password", '',
             "datasources.default.driverClassName", "org.h2.Driver",
             "jpa.default.properties.hibernate.hbm2ddl.auto", "create-drop",
             "jpa.default.properties.hibernate.show_sql", false,

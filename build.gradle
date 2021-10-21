@@ -22,12 +22,13 @@ micronaut {
 }
 
 dependencies {
+    implementation "io.micronaut.data:micronaut-data-spring-jpa"
+
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut.data:micronaut-data-jdbc")
     implementation("io.micronaut.flyway:micronaut-flyway")
     implementation("io.micronaut.graphql:micronaut-graphql")
     implementation("io.micronaut.groovy:micronaut-runtime-groovy")
-    implementation("io.micronaut.sql:micronaut-hibernate-jpa")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("javax.annotation:javax.annotation-api")
     compileOnly("io.micronaut:micronaut-http-validation")
