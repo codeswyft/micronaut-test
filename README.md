@@ -1,3 +1,9 @@
+This app was initially created using this command: 
+
+```
+mn create-app --build=gradle --lang=groovy --test=spock --features=graphql,data-jdbc,flyway,h2,hibernate-jpa,jdbc-hikari com.codeswyft.fielder
+```
+
 ## Micronaut 3.1.1 Documentation
 
 - [User Guide](https://docs.micronaut.io/3.1.1/guide/index.html)
