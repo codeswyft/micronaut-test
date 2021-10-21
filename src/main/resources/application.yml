@@ -1,0 +1,30 @@
+micronaut:
+  application:
+    name: fielder
+
+datasources:
+  default:
+    url: jdbc:postgresql://${JDBC_HOST:localhost}:5432/${JDBC_SCHEMA:fielder}
+    username: ${JDBC_USER:fielder}
+    password: ${JDBC_PASSWORD:fielder}
+    driver-class-name: ${JDBC_DRIVER:org.postgresql.Driver}
+    maximum-pool-size: 25
+    minimum-idle: 5
+
+jpa:
+  default:
+    entity-scan:
+      packages:
+        - "com.codeswyft.fielder.domain"
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create-drop
+        show_sql: false
+        generate_statistics: false
+
+flyway:
+  datasources:
+    default:
+      enabled: true
+      locations: classpath:flyway/base

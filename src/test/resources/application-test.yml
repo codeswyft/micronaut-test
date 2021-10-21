@@ -1,0 +1,57 @@
+micronaut:
+  application:
+    name: fielder
+  server:
+    port: -1
+    cors:
+      enabled: true
+
+app:
+  customer: goliath
+  audit:
+    create: true
+    update: true
+    delete: true
+  sms:
+    enabled: false
+  email:
+    enabled: false
+    validate_email: false
+    create_routes: false
+  payment:
+    stripe:
+      enabled: false
+
+datasources:
+  default:
+    url: jdbc:h2:mem:default;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ""
+    driverClassName: org.h2.Driver
+
+flyway:
+  datasources:
+    default:
+      enabled: false
+      locations: classpath:flyway/base,classpath:flyway/test
+
+graphql:
+  graphiql:
+    enabled: true
+
+google:
+  recaptcha:
+    enabled: false
+
+data:
+  seeder:
+    test-data: true
+    items: true
+    scramble-dates: false
+    percent:
+      nullable: 0.0
+
+gcp:
+  cloud:
+    storage:
+      local: true
