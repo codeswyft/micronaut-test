@@ -7,6 +7,7 @@ import io.micronaut.core.annotation.NonNull
 
 import javax.persistence.CascadeType
 import javax.persistence.Column
+import javax.persistence.Embedded
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
@@ -57,6 +58,14 @@ class InvoicePO extends TransactionPO<InvoiceLineItemPO> {
 
     @Column(name = 'date_sent_to_plugin_provider', nullable = true)
     LocalDateTime dateSentToPluginProvider // Date on which the invoice was sent to plug-in service provider
+
+    @NonNull
+    @Embedded
+    DiscountEO discount = new DiscountEO(value: BigDecimal.ZERO)
+
+    @NonNull
+    @Embedded
+    CostEO cost = new CostEO(total: BigDecimal.ZERO)
 
     //==========================================================================================
     // We want to continually update our cost as line items change
