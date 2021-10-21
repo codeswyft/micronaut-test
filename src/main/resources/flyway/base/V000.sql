@@ -132,3 +132,62 @@ ALTER TABLE ONLY tax_rate
 
 -- ALTER TABLE ONLY tax_rate_group
 --     ADD CONSTRAINT fk_taxrategroup_organization FOREIGN KEY (organization_id) REFERENCES organization (id);
+
+CREATE TABLE invoice
+(
+    id                           character varying(255)      NOT NULL,
+    created_at                   timestamp without time zone NOT NULL,
+    created_by_id                character varying(255)      NOT NULL,
+    updated_at                   timestamp without time zone NOT NULL,
+    updated_by_id                character varying(255)      NOT NULL,
+    version                      integer,
+    number                       integer                     NOT NULL,
+    billing_contact_id           character varying(255),
+    description                  text,
+    discount_value               numeric(15, 2) DEFAULT 0    NOT NULL,
+    discount_type                character varying(50)       NOT NULL,
+    notes                        text,
+    currency_code                character varying(5)        NOT NULL,
+    job_id                       character varying(255)      NOT NULL,
+    organization_id              character varying(255)      NOT NULL,
+    customer_note                text,
+    additional_email             character varying(50),
+    status                       character varying(255)      NOT NULL,
+    due_date                     timestamp without time zone,
+    sub_total                    numeric(15, 2)              NOT NULL,
+    total_tax                    numeric(15, 2)              NOT NULL,
+    total_discount               numeric(15, 2)              NOT NULL,
+    total                        numeric(15, 2)              NOT NULL,
+    plugin_provider              character varying(255),
+    plugin_provider_invoice_id   character varying(255),
+    date_sent_to_customer        timestamp without time zone,
+    date_sent_to_plugin_provider timestamp without time zone
+);
+
+CREATE TABLE invoice_line_item
+(
+    id                character varying(255)      NOT NULL,
+    created_at        timestamp without time zone NOT NULL,
+    created_by_id     character varying(255)      NOT NULL,
+    updated_at        timestamp without time zone NOT NULL,
+    updated_by_id     character varying(255)      NOT NULL,
+    version           integer,
+    number            character varying(255)      NOT NULL,
+    item_id           character varying(255)      NOT NULL,
+    quantity          integer                     NOT NULL,
+    unit_price        numeric(15, 2)              NOT NULL,
+    tax_rate_group_id character varying(255)      NOT NULL,
+    invoice_id        character varying(255)      NOT NULL
+);
+
+ALTER TABLE ONLY invoice_line_item
+    ADD CONSTRAINT invoice_line_item_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY invoice
+    ADD CONSTRAINT invoice_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY invoice_line_item
+    ADD CONSTRAINT fk_invoicelineitem_invoice FOREIGN KEY (invoice_id) REFERENCES invoice (id);
+
+ALTER TABLE ONLY invoice_line_item
+    ADD CONSTRAINT fk_invoicelineitem_taxrategroup FOREIGN KEY (tax_rate_group_id) REFERENCES tax_rate_group (id);
