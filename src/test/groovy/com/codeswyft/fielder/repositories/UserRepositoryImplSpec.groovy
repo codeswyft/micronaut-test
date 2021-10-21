@@ -5,10 +5,8 @@ import com.codeswyft.fielder.graphql.BaseFunctionalSpec
 import com.codeswyft.fielder.model.User
 import com.codeswyft.fielder.model.UserStatus
 import com.codeswyft.fielder.util.dataseed.DefaultRoles
-import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import spock.lang.Stepwise
 
-@MicronautTest(transactional = true)
 @Stepwise
 class UserRepositoryImplSpec extends BaseFunctionalSpec {
 

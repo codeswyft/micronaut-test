@@ -22,6 +22,7 @@ micronaut {
 }
 
 dependencies {
+    // apparently this is needed for sessions/transactions
     implementation "io.micronaut.data:micronaut-data-spring-jpa"
 
     implementation("io.micronaut:micronaut-http-client")
