@@ -1,7 +1,7 @@
 plugins {
     id("groovy") 
     id("com.github.johnrengelman.shadow") version "7.1.0"
-    id("io.micronaut.application") version "2.0.6"
+    id("io.micronaut.application") version "2.0.7"
 }
 
 version = "0.1"
@@ -36,6 +36,9 @@ dependencies {
     runtimeOnly("com.h2database:h2")
     implementation("io.micronaut:micronaut-validation")
 
+    // This is needed in order to use the javax.Inject annotation, as per Micronaut user guide
+    implementation("javax.inject:javax.inject:1")
+
     // Note: We are using PostgreSQL 12.1.x
     implementation 'org.postgresql:postgresql:42.3.0'
     implementation "com.google.cloud.sql:postgres-socket-factory:1.3.4"
@@ -52,6 +55,12 @@ dependencies {
 
     implementation "org.codehaus.groovy:groovy-all:$groovyVersion"
     implementation "org.codehaus.groovy:groovy-json:$groovyVersion"
+
+    // From https://micronaut-projects.github.io/micronaut-test/snapshot/guide/index.html#spock
+    testImplementation "io.micronaut.test:micronaut-test-spock"
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
 }
 
 
