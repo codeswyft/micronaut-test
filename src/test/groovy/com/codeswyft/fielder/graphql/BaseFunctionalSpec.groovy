@@ -10,10 +10,8 @@ import com.codeswyft.fielder.repositories.RoleRepository
 import com.codeswyft.fielder.repositories.UserRepository
 import com.codeswyft.fielder.util.dataseed.DefaultPermissions
 import com.fasterxml.jackson.databind.ObjectMapper
-import groovy.util.logging.Slf4j
-
 //import graphql.ExecutionInput
-
+import groovy.util.logging.Slf4j
 import io.micronaut.context.ApplicationContext
 import io.micronaut.core.util.CollectionUtils
 import io.micronaut.runtime.server.EmbeddedServer
